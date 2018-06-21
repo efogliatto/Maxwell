@@ -22,12 +22,12 @@ def coexistencia(eos, T):
 
     # Resolucion: presion de equilibrio
     
-    p0 = op.fsolve( intFunc, eos.p(0.08,T) )
+    p0 = op.fsolve( intFunc, eos.p(eos.initRho(T),T) )
 
 
     # Resolucion: densidades de coexistencia a partir de presion de equilibrio
 
-    f=lambda x:p0 - eos.p(x,T)
+    f = lambda x:p0 - eos.p(x,T)
 
     a = roots(f, 0, 1)[0:3]
     
